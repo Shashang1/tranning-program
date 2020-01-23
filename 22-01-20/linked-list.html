@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Linked list</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <div class="container p-3 mt-3">
+    <h3>Linked list using javascript</h3>
+    <div>
+      <label for="add">Add Node </label>
+      <input type="text" name="add" id="add">
+      <input type="button" name="sub" class="btn btn-danger" value="Add Node" onclick="add()">
+
+      <button type="button" class="btn btn-success" onclick="Li.display();">Display list</button>
+    
+    </div>
+
+
+    
+
+    
+
+    <div>
+      <ul class="list-group mt-3" id="list">
+        
+      </ul>
+    </div>
+
+  </div>
+
+
+  <script type="text/javascript">
+    class Node{
+      constructor(data){
+        this.data = data;
+        this.next = null;
+      }
+    }
+
+    class LinkedList{
+      constructor(){
+        this.head = null;
+        this.size=0;
+      }
+      addNode(data){
+        var node = new Node(data);
+        
+        var current;
+        if (this.head == null) {
+          this.head = node;
+        }
+        else{
+          current = this.head;
+          while(current.next){
+            current = current.next;
+          }
+          current.next  = node;
+        }
+        this.size++;
+      }
+      display(){
+        var cur = this.head;
+        document.getElementById("list").innerHTML = "<h4>List is </h4>";
+        while(cur){
+          console.log("printing");
+          document.getElementById("list").innerHTML +="<li class ='list-group-item'>"+cur.data+"</li>";
+          cur = cur.next;
+        }
+      }
+
+    }
+
+    Li = new LinkedList();
+    function add(){
+      var elem = document.getElementById("add").value;
+      if(elem==""){
+        alert("Not valid input");
+      }
+      else {
+        Li.addNode(elem);
+      }
+      document.getElementById("add").value="";
+    }
+
+    
+</script>
+
+
+
+</body>
+</html>
